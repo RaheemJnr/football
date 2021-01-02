@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Football</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="table">Table</string>
+    <string name="livescore">LiveScore</string>
+    <string name="news">News</string>
+    <string name="name">Name</string>
+    <string name="p">P</string>
+    <string name="w">W</string>
+    <string name="l">L</string>
+    <string name="d">D</string>
+    <string name="pts">Pts</string>
+    <string name="retry_button">Retry</string>
+</resources>

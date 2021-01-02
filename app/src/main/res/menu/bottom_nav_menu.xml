@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/tableFragment"
+        android:icon="@drawable/table"
+        android:title="@string/table" />
+    <item
+        android:id="@+id/liveScore"
+        android:icon="@drawable/live_score"
+        android:title="@string/livescore" />
+    <item
+        android:id="@+id/news"
+        android:icon="@drawable/news_rss"
+        android:title="@string/news" />
+</menu>
