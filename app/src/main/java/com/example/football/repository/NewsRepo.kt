@@ -17,7 +17,7 @@ class NewsRepo(private val newsdatabase: FootballDatabase) {
     //
     val getNewsInDatabase: LiveData<List<NewsModel>> = Transformations
         .map(newsdatabase.footballDAO.getNews()) {
-            it.asNewsDomainModel()
+            it.asNewsDomainModel().shuffled()
         }
 
 
