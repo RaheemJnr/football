@@ -1,14 +1,16 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'org.jetbrains.kotlin.plugin.compose'
+apply plugin: 'com.google.devtools.ksp'
 
 android {
-    compileSdkVersion 30
+    compileSdkVersion 35
 
     defaultConfig {
         applicationId "com.example.football"
         minSdkVersion 21
-        targetSdkVersion 30
+        targetSdkVersion 33
         versionCode 1
         versionName "1.0"
 
@@ -37,6 +39,7 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion '1.4.0'
     }
+    namespace 'com.example.football'
 }
 
 dependencies {
@@ -89,11 +92,12 @@ dependencies {
     implementation "com.airbnb.android:lottie:3.5.0"
 
     // Room database
-    implementation "androidx.room:room-runtime:2.2.5"
-    kapt "androidx.room:room-compiler:2.2.5"
+    implementation "androidx.room:room-runtime:2.7.1"
+   // kapt "androidx.room:room-compiler:2.2.5"
+    ksp "androidx.room:room-compiler:2.7.1"
 
     // Kotlin Extensions and Coroutines support for Room
-    implementation "androidx.room:room-ktx:2.2.5"
+    implementation "androidx.room:room-ktx:2.7.1"
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
