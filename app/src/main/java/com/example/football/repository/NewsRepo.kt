@@ -1,8 +1,8 @@
 package com.example.football.repository
 
 import android.util.Log
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.Transformations
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
 import com.example.football.data.network.NewsApiCall
 import com.example.football.data.network.asNewsDataBaseModel
 import com.example.football.data.roomDatabase.FootballDatabase
@@ -15,10 +15,8 @@ class NewsRepo(private val newsdatabase: FootballDatabase) {
 
 
     //
-    val getNewsInDatabase: LiveData<List<NewsModel>> = Transformations
-        .map(newsdatabase.footballDAO.getNews()) {
-            it.asNewsDomainModel()
-        }
+    val newsFlow: Flow<List<NewsModel>> =
+        newsdatabase.footballDAO.getNews().map { it.asNewsDomainModel() }
 
 
     //

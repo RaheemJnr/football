@@ -1,6 +1,6 @@
 package com.example.football.data.roomDatabase
 
-import androidx.lifecycle.LiveData
+import kotlinx.coroutines.flow.Flow
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
@@ -14,10 +14,10 @@ interface footballDAO {
     into league table database
      */
     @Query("SELECT * FROM leagueTable")
-    fun getLeagueTable(): LiveData<List<LeagueTableDatabase>>
+    fun getLeagueTable(): Flow<List<LeagueTableDatabase>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertAllLeagues(vararg videos: LeagueTableDatabase)
+    suspend fun insertAllLeagues(vararg videos: LeagueTableDatabase)
 
 
     /**
@@ -26,10 +26,10 @@ interface footballDAO {
     into news table database
      */
     @Query("SELECT * FROM newsTable")
-    fun getNews(): LiveData<List<NewsDatabase>>
+    fun getNews(): Flow<List<NewsDatabase>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertAllNews(vararg videos: NewsDatabase)
+    suspend fun insertAllNews(vararg videos: NewsDatabase)
 
 
 }

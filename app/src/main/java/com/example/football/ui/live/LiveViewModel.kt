@@ -1,36 +1,28 @@
 package com.example.football.ui.live
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.football.data.network.LiveScoreApiCall
 import com.example.football.data.network.asLiveScoreDomainModel
 import com.example.football.domain.NetworkLiveScore
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
 enum class NetworkState { LOADING, SUCCESS, FAILURE }
 
 class LiveViewModel : ViewModel() {
 
-    //encapsulating liveData
-    private val _liveScore = MutableLiveData<List<NetworkLiveScore>>()
-    val liveScore: LiveData<List<NetworkLiveScore>> = _liveScore
+    private val _liveScore = MutableStateFlow<List<NetworkLiveScore>>(emptyList())
+    val liveScore: StateFlow<List<NetworkLiveScore>> = _liveScore
 
-    // The internal MutableLiveData status that stores the status of the most recent request
-    private val _status = MutableLiveData<NetworkState>()
-
-    // The external immutable LiveData for the request status String
-    val status: LiveData<NetworkState>
-        get() = _status
+    private val _status = MutableStateFlow(NetworkState.LOADING)
+    val status: StateFlow<NetworkState> = _status
 
     init {
         getLiveScores()
     }
 
-    /**
-     * send network request to get news
-     */
     fun getLiveScores() {
         viewModelScope.launch {
             try {
@@ -40,10 +32,8 @@ class LiveViewModel : ViewModel() {
                 _status.value = NetworkState.SUCCESS
             } catch (t: Throwable) {
                 _status.value = NetworkState.FAILURE
-                _liveScore.value = ArrayList()
+                _liveScore.value = emptyList()
             }
-
         }
     }
-
 }
