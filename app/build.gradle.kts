@@ -46,61 +46,61 @@ android {
 
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
-    implementation("org.jetbrains.kotlin:kotlin-stdlib:${'$'}kotlin_version")
-    implementation("androidx.core:core-ktx:1.3.2")
-    implementation("androidx.appcompat:appcompat:1.2.0")
+    implementation(libs.kotlin.stdlib)
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.appcompat)
 
     //ui
-    implementation("androidx.constraintlayout:constraintlayout:2.0.4")
-    implementation("com.google.android.material:material:1.2.1")
+    implementation(libs.androidx.constraintlayout)
+    implementation(libs.material)
 
     // ViewModel and LiveData
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0")
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
 
     // Navigation
-    implementation("androidx.navigation:navigation-fragment-ktx:2.3.2")
-    implementation("androidx.navigation:navigation-ui-ktx:2.3.2")
+    implementation(libs.androidx.navigation.fragment.ktx)
+    implementation(libs.androidx.navigation.ui.ktx)
 
     // Coroutines
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.7")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.7")
-    implementation("androidx.legacy:legacy-support-v4:1.0.0")
-    implementation("androidx.lifecycle:lifecycle-extensions:2.2.0")
+    implementation(libs.kotlinx.coroutines.core)
+    implementation(libs.kotlinx.coroutines.android)
+    implementation(libs.androidx.legacy.support.v4)
+    implementation(libs.androidx.lifecycle.extensions)
 
     // Jetpack Compose
-    implementation("androidx.activity:activity-compose:1.7.0")
-    implementation("androidx.compose.ui:ui:1.4.0")
-    implementation("androidx.compose.material:material:1.4.0")
-    implementation("androidx.compose.ui:ui-tooling-preview:1.4.0")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.5.1")
-    implementation("androidx.compose.runtime:runtime-livedata:1.4.0")
-    debugImplementation("androidx.compose.ui:ui-tooling:1.4.0")
-    implementation("io.coil-kt:coil-compose:2.2.2")
+    implementation(libs.androidx.activity.compose)
+    implementation(libs.androidx.ui)
+    implementation(libs.androidx.material)
+    implementation(libs.androidx.ui.tooling.preview)
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
+    implementation(libs.androidx.runtime.livedata)
+    debugImplementation(libs.androidx.ui.tooling)
+    implementation(libs.coil.compose)
 
     // Retrofit for networking
     // Retrofit with Moshi Converter
-    implementation("com.squareup.retrofit2:retrofit:2.9.0")
-    implementation("com.squareup.retrofit2:converter-moshi:2.9.0")
-    implementation("com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:0.9.2")
+    implementation(libs.retrofit)
+    implementation(libs.converter.moshi)
+    implementation(libs.retrofit2.kotlin.coroutines.adapter)
 
     // Moshi for parsing the JSON format
-    implementation("com.squareup.moshi:moshi:1.9.3")
-    implementation("com.squareup.moshi:moshi-kotlin:1.9.3")
+    implementation(libs.moshi)
+    implementation(libs.moshi.kotlin)
 
     // Glide for images
-    implementation("com.github.bumptech.glide:glide:4.8.0")
+    implementation(libs.glide)
 
     //lottie
-    implementation("com.airbnb.android:lottie:3.5.0")
+    implementation(libs.lottie)
 
     // Room database
-    implementation("androidx.room:room-runtime:2.7.1")
-    ksp("androidx.room:room-compiler:2.7.1")
+    implementation(libs.androidx.room.runtime)
+    ksp(libs.androidx.room.compiler)
 
     // Kotlin Extensions and Coroutines support for Room
-    implementation("androidx.room:room-ktx:2.7.1")
+    implementation(libs.androidx.room.ktx)
 
-    testImplementation("junit:junit:4.12")
-    androidTestImplementation("androidx.test.ext:junit:1.1.2")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.3.0")
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.androidx.junit)
+    androidTestImplementation(libs.androidx.espresso.core)
 }
