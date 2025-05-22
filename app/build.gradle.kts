@@ -64,8 +64,8 @@ dependencies {
     // Coroutines
     implementation(libs.kotlinx.coroutines.core)
     implementation(libs.kotlinx.coroutines.android)
-    implementation(libs.androidx.legacy.support.v4)
-    implementation(libs.androidx.lifecycle.extensions)
+    implementation(libs.koin.android)
+    implementation(libs.koin.compose)
 
     // Jetpack Compose
     implementation(libs.androidx.activity.compose)
@@ -73,7 +73,6 @@ dependencies {
     implementation(libs.androidx.material)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.lifecycle.viewmodel.compose)
-    implementation(libs.androidx.runtime.livedata)
     debugImplementation(libs.androidx.ui.tooling)
     implementation(libs.coil.compose)
 

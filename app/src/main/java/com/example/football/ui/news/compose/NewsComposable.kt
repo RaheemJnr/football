@@ -13,15 +13,15 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
-import androidx.compose.runtime.livedata.observeAsState
-import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.compose.runtime.collectAsState
+import org.koin.androidx.compose.koinViewModel
 import coil.compose.AsyncImage
 import com.example.football.domain.NewsModel
 import com.example.football.ui.news.NewsViewModel
 
 @Composable
-fun NewsScreen(viewModel: NewsViewModel = viewModel()) {
-    val news by viewModel.news.observeAsState(emptyList())
+fun NewsScreen(viewModel: NewsViewModel = koinViewModel()) {
+    val news by viewModel.news.collectAsState()
     if (news.isEmpty()) {
         Box(modifier = Modifier.fillMaxSize(), contentAlignment = androidx.compose.ui.Alignment.Center) {
             androidx.compose.material.CircularProgressIndicator()

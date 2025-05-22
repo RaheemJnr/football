@@ -15,7 +15,6 @@ kotlin = "2.1.10"
 kotlinxCoroutinesAndroid = "1.8.1"
 kotlinxCoroutinesCore = "1.6.4"
 ksp = "2.1.10-1.0.30"
-legacySupportV4 = "1.0.0"
 lifecycleExtensions = "2.2.0"
 lifecycleViewmodelCompose = "2.9.0"
 lottie = "3.5.0"
@@ -25,8 +24,8 @@ moshiKotlin = "1.9.3"
 navigationUiKtx = "2.9.0"
 retrofit2KotlinCoroutinesAdapter = "0.9.2"
 roomKtx = "2.7.1"
-runtimeLivedata = "1.8.2"
 uiTooling = "1.8.2"
+koin = "3.5.3"
 
 [libraries]
 android-gradlePlugin = { group = "com.android.tools.build", name = "gradle", version.ref = "androidGradlePlugin" }
@@ -36,8 +35,6 @@ androidx-constraintlayout = { module = "androidx.constraintlayout:constraintlayo
 androidx-core-ktx = { module = "androidx.core:core-ktx", version.ref = "coreKtx" }
 androidx-espresso-core = { module = "androidx.test.espresso:espresso-core", version.ref = "espressoCore" }
 androidx-junit = { module = "androidx.test.ext:junit", version.ref = "junitVersion" }
-androidx-legacy-support-v4 = { module = "androidx.legacy:legacy-support-v4", version.ref = "legacySupportV4" }
-androidx-lifecycle-extensions = { module = "androidx.lifecycle:lifecycle-extensions", version.ref = "lifecycleExtensions" }
 androidx-lifecycle-viewmodel-compose = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "lifecycleViewmodelCompose" }
 androidx-lifecycle-viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycleExtensions" }
 androidx-material = { module = "androidx.compose.material:material", version.ref = "materialVersion" }
@@ -46,7 +43,6 @@ androidx-navigation-ui-ktx = { module = "androidx.navigation:navigation-ui-ktx",
 androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "roomKtx" }
 androidx-room-ktx = { module = "androidx.room:room-ktx", version.ref = "roomKtx" }
 androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "roomKtx" }
-androidx-runtime-livedata = { module = "androidx.compose.runtime:runtime-livedata", version.ref = "runtimeLivedata" }
 androidx-ui = { module = "androidx.compose.ui:ui", version.ref = "uiTooling" }
 androidx-ui-tooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "uiTooling" }
 androidx-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "uiTooling" }
@@ -66,6 +62,8 @@ moshi = { module = "com.squareup.moshi:moshi", version.ref = "moshiKotlin" }
 moshi-kotlin = { module = "com.squareup.moshi:moshi-kotlin", version.ref = "moshiKotlin" }
 retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "converterMoshi" }
 retrofit2-kotlin-coroutines-adapter = { module = "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter", version.ref = "retrofit2KotlinCoroutinesAdapter" }
+koin-android = { module = "io.insert-koin:koin-android", version.ref = "koin" }
+koin-compose = { module = "io.insert-koin:koin-androidx-compose", version.ref = "koin" }
 
 
 [plugins]

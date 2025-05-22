@@ -11,14 +11,14 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import androidx.compose.runtime.livedata.observeAsState
-import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.compose.runtime.collectAsState
+import org.koin.androidx.compose.koinViewModel
 import com.example.football.domain.LeagueTableModel
 import com.example.football.ui.table.TableViewModel
 
 @Composable
-fun LeagueTableScreen(viewModel: TableViewModel = viewModel()) {
-    val tables by viewModel.databaseLeagueTable.observeAsState(emptyList())
+fun LeagueTableScreen(viewModel: TableViewModel = koinViewModel()) {
+    val tables by viewModel.leagueTable.collectAsState()
 
     if (tables.isEmpty()) {
         Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {

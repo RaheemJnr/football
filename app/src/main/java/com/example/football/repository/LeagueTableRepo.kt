@@ -1,8 +1,8 @@
 package com.example.football.repository
 
 import android.util.Log
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.Transformations
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
 import com.example.football.data.network.TableApiCall
 import com.example.football.data.network.asLeagueDataBaseModel
 import com.example.football.data.roomDatabase.FootballDatabase
@@ -15,10 +15,8 @@ class LeagueTableRepo(private val leagueDatabase: FootballDatabase) {
 
 
     //
-    val getLeagueTableInDatabase: LiveData<List<LeagueTableModel>> = Transformations
-        .map(leagueDatabase.footballDAO.getLeagueTable()) {
-            it.asLeagueDomainModel()
-        }
+    val leagueTableFlow: Flow<List<LeagueTableModel>> =
+        leagueDatabase.footballDAO.getLeagueTable().map { it.asLeagueDomainModel() }
 
     //
     suspend fun refreshLeagueTable() {

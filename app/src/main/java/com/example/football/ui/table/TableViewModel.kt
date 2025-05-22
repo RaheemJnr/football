@@ -1,53 +1,35 @@
 package com.example.football.ui.table
 
-import android.app.Application
-import androidx.lifecycle.*
-import com.example.football.data.roomDatabase.FootballDatabase
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.football.repository.LeagueTableRepo
 import com.example.football.ui.live.NetworkState
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
-class TableViewModel(app: Application) : ViewModel() {
+class TableViewModel(
+    private val repo: LeagueTableRepo
+) : ViewModel() {
 
-
-    // The internal MutableLiveData status that stores the status of the most recent request
-    private val _status = MutableLiveData<NetworkState>()
-
-    // The external immutable LiveData for the request status String
-    val status: LiveData<NetworkState>
-        get() = _status
-
-    //
-    private val database = FootballDatabase.getInstance(app)
-    private val repo = LeagueTableRepo(database)
+    private val _status = MutableStateFlow(NetworkState.SUCCESS)
+    val status: StateFlow<NetworkState> = _status
 
     init {
         getPremierLeagueTable()
     }
 
-    /**
-     * send network request to get premier league standing
-     */
     private fun getPremierLeagueTable() {
         viewModelScope.launch {
             repo.refreshLeagueTable()
         }
     }
 
-
-    val databaseLeagueTable = repo.getLeagueTableInDatabase
-
-
-    /**
-     * Factory for constructing DevByteViewModel with parameter
-     */
-    class TableFactory(private val app: Application) : ViewModelProvider.Factory {
-        override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-            if (modelClass.isAssignableFrom(TableViewModel::class.java)) {
-                @Suppress("UNCHECKED_CAST")
-                return TableViewModel(app) as T
-            }
-            throw IllegalArgumentException("Unable to construct viewmodel")
-        }
-    }
+    val leagueTable = repo.leagueTableFlow.stateIn(
+        scope = viewModelScope,
+        started = SharingStarted.Eagerly,
+        initialValue = emptyList()
+    )
 }

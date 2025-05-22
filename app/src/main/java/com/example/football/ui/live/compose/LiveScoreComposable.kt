@@ -13,16 +13,16 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import androidx.compose.runtime.livedata.observeAsState
-import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.compose.runtime.collectAsState
+import org.koin.androidx.compose.koinViewModel
 import com.example.football.domain.NetworkLiveScore
 import com.example.football.ui.live.LiveViewModel
 import com.example.football.ui.live.NetworkState
 
 @Composable
-fun LiveScoreScreen(viewModel: LiveViewModel = viewModel()) {
-    val scores by viewModel.liveScore.observeAsState(emptyList())
-    val status by viewModel.status.observeAsState()
+fun LiveScoreScreen(viewModel: LiveViewModel = koinViewModel()) {
+    val scores by viewModel.liveScore.collectAsState()
+    val status by viewModel.status.collectAsState()
 
     when (status) {
         NetworkState.LOADING -> Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
