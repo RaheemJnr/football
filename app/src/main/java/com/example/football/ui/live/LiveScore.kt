@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.football.R
 import com.example.football.databinding.FragmentLiveScoreBinding
@@ -38,23 +37,23 @@ class LiveScore : Fragment() {
             binding.liveScoreList.adapter = adapter
 
             //observe the response from server and set the returned data in the adapter to display
-            liveScore.observe(viewLifecycleOwner, Observer { live ->
+            liveScore.observe(viewLifecycleOwner, { live ->
                 live?.apply {
                     adapter.submitList(live)
                 }
             })
 
             // observing loading state
-            status.observe(viewLifecycleOwner, Observer {
+            status.observe(viewLifecycleOwner, {
                 val statusImage = binding.loadingAnim
                 when (it) {
                     NetworkState.LOADING -> showLoading()
                     NetworkState.FAILURE -> showError()
-                    NetworkState.SUCCESS -> {
+                    else ->
                         statusImage.visibility = View.GONE
 
-                    }
                 }
+
             })
         }
         return binding.root

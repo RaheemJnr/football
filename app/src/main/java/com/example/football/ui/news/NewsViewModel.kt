@@ -9,8 +9,7 @@ import com.example.football.data.roomDatabase.FootballDatabase
 import com.example.football.repository.NewsRepo
 import kotlinx.coroutines.launch
 
-/// class the set network status
-enum class NewsNetworkState { LOADING, SUCCESS, FAILURE }
+
 
 class NewsViewModel(app: Application) : AndroidViewModel(app) {
 
