@@ -22,7 +22,7 @@ private val moshi = Moshi.Builder()
 object TableApiCall {
     // Configure retrofit to parse JSON and use coroutines
     private val retrofit = Retrofit.Builder()
-        .baseUrl("https://www.thesportsdb.com/api/v1/json/1/")
+        .baseUrl("https://api-football-standings.azharimm.dev/")
         .addConverterFactory(MoshiConverterFactory.create(moshi))
         .addCallAdapterFactory(CoroutineCallAdapterFactory())
         .build()
@@ -36,7 +36,7 @@ object TableApiCall {
 object NewsApiCall {
     // Configure retrofit to parse JSON and use coroutines
     private val retrofit = Retrofit.Builder()
-        .baseUrl("http://newsapi.org/v2/")
+        .baseUrl("https://www.scorebat.com/")
         .addConverterFactory(MoshiConverterFactory.create(moshi))
         .addCallAdapterFactory(CoroutineCallAdapterFactory())
         .build()
@@ -49,7 +49,7 @@ object NewsApiCall {
 object LiveScoreApiCall {
     // Configure retrofit to parse JSON and use coroutines
     private val retrofit = Retrofit.Builder()
-        .baseUrl("https://livescore-football.p.rapidapi.com/soccer/")
+        .baseUrl("https://api.sofascore.com/api/v1/")
         .addConverterFactory(MoshiConverterFactory.create(moshi))
         .addCallAdapterFactory(CoroutineCallAdapterFactory())
         .build()
